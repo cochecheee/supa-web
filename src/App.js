@@ -82,14 +82,14 @@ function Header({ showForm, setShowForm }) {
 
 /* Color of categories */
 const CATEGORIES = [
-  { name: "Technology", color: "#3b82f6" },
-  { name: "Science", color: "#16a34a" },
-  { name: "Finance", color: "#ef4444" },
-  { name: "Society", color: "#eab308" },
-  { name: "Entertainment", color: "#db2777" },
-  { name: "Health", color: "#14b8a6" },
-  { name: "History", color: "#f97316" },
-  { name: "News", color: "#8b5cf6" },
+  { name: "Technology", color: "#49243E" },
+  { name: "Science", color: "#704264" },
+  { name: "Finance", color: "#BB8493" },
+  { name: "Society", color: "#987070" },
+  { name: "Entertainment", color: "#C39898" },
+  { name: "Health", color: "#DBB5B5" },
+  { name: "History", color: "#DBAFA0" },
+  { name: "News", color: "#867070" },
 ];
 
 function CategoryFilter({ setCurrentCategory }) {
@@ -172,7 +172,14 @@ function FactEntity({ setFacts, fact }) {
       </p>
       <span
         className="tag"
-        style={{ backgroundColor: "#3b82f6" }}
+        style={{
+          backgroundColor: (() => {
+            const category = CATEGORIES.find(
+              (cat) => cat.name === fact.category
+            );
+            return category ? category.color : "#F2613F"; // Replace 'defaultColor' with a default color if no match is found
+          })(),
+        }}
         color={{ color: "#eef2ff" }}
       >
         {fact.category}
@@ -182,10 +189,10 @@ function FactEntity({ setFacts, fact }) {
           👍 {fact.voteInteresting}
         </button>
         <button onClick={() => handleVote("voteMindblowing")}>
-          🤯 {fact.voteMindblowing}
+          😯 {fact.voteMindblowing}
         </button>
         <button onClick={() => handleVote("voteFalse")}>
-          ⛔️ {fact.voteFalse}
+          👎 {fact.voteFalse}
         </button>
       </div>
     </li>
